@@ -19,6 +19,7 @@ public class PickOne extends Frame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+            	saveAllCharacters();
                 dispose();
             }
         });

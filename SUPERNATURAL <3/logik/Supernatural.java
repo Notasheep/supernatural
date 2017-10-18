@@ -10,6 +10,6 @@ public class Supernatural {
 		    CharacterContainer ccMain= CharacterContainer.instance();
 		    ccMain.add(dean);
 		    ccMain.add(sam);
-		    Fight a = new Fight(dean, sam);
-		  }// all the shit i wonna see
+		    
+		  }//
 }
