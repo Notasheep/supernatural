@@ -11,5 +11,5 @@ public class Supernatural {
 		    ccMain.add(dean);
 		    ccMain.add(sam);
 		    Fight a = new Fight(dean, sam);
-		  }
+		  }// all the shit i wonna see
 }
