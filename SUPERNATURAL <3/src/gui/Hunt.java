@@ -6,7 +6,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Hunt extends Dialog {
-    TextArea zeigeAlle = new TextArea(10,100);
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 832190509465543828L;
+	TextArea zeigeAlle = new TextArea(10,100);
     Button action = new Button("Kampf");
 
 

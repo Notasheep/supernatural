@@ -8,7 +8,7 @@ public class WriteCharacterFile {
 	
     public static void saveAllCharacters(CharacterContainer charcon){
     	try{
-    		File file = new File("AllCharacters.txt");
+    		File file = new File("Data/AllCharacters.txt");
 	        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
 	        out.writeObject(charcon.charconList);
 	        out.flush();

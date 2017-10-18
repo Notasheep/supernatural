@@ -11,6 +11,10 @@ import logik.Hunter;
 
 public class AddHunter extends Dialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1409989112406408631L;
 	Button save = new Button("Speichern");
 	TextField enterName = new TextField(20);
 	Label name = new Label("Name:");

@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
+import data.ReadCharacterFile;
+
 public class CharacterContainer extends Observable implements Iterator<Character> {
 
 	private static CharacterContainer charcon = null;
-	public static ArrayList<Character> charconList = new ArrayList<Character>();
+	public ArrayList<Character> charconList = new ArrayList<Character>();
 	private int index = 0;
 	
 	private CharacterContainer(){
@@ -16,6 +18,8 @@ public class CharacterContainer extends Observable implements Iterator<Character
 	public static CharacterContainer instance(){
 		if (charcon == null){
 			charcon = new CharacterContainer();
+			@SuppressWarnings("unused")
+			ReadCharacterFile read = new ReadCharacterFile(charcon);
 		}
 		return charcon;
 	}

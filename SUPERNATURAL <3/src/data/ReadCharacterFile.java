@@ -7,13 +7,15 @@ import logik.CharacterContainer;
 
 public class ReadCharacterFile {
 	ObjectInputStream objectinputstream = null;
+	@SuppressWarnings("unchecked")
 	public ReadCharacterFile(CharacterContainer charcon) {
 	try {
-	    FileInputStream streamIn = new FileInputStream("G:\\address.ser");
+	    FileInputStream streamIn = new FileInputStream("Data/AllCharacters.txt");
 	    objectinputstream = new ObjectInputStream(streamIn);
-	    charcon.charconList= (ArrayList<logik.Character>) objectinputstream.readObject();
+	    charcon.charconList = (ArrayList<logik.Character>) objectinputstream.readObject();
 	} catch (Exception e) {
 	    e.printStackTrace();
+	    charcon.charconList = new ArrayList<logik.Character>();
 	} finally {
 	    if(objectinputstream != null){
 	        try {
