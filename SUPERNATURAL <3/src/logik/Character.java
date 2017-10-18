@@ -1,8 +1,9 @@
 package logik;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Character{
+public class Character implements Serializable{
     public String name;
     public Integer live = 100;
     public Boolean isDead = false;

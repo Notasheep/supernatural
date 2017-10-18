@@ -3,6 +3,8 @@ package gui;
 import java.awt.*;
 import java.awt.event.*;
 
+import data.WriteCharacterFile;
+
 import logik.CharacterContainer;
 
 public class PickOne extends Frame {
@@ -19,7 +21,7 @@ public class PickOne extends Frame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-            	saveAllCharacters();
+            	WriteCharacterFile.saveAllCharacters(CharacterContainer.instance());
                 dispose();
             }
         });
@@ -35,7 +37,7 @@ public class PickOne extends Frame {
         		} else if (e.getSource() == newHunt){
         			Hunt huntWindow = new Hunt(x);
         		}else if (e.getSource() == closeAndSave) {
-        			
+        			 
         		}
         	}
         };
