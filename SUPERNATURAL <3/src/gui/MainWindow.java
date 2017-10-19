@@ -19,6 +19,7 @@ public class MainWindow extends Frame {
     Button closeAndSave = new Button("Schpeichern und Schließen");
     Button newHunt = new Button("Neue Jagd beginnen");
     
+    
     public MainWindow() {
     	super("Jägerregister");
         this.setLayout(new GridLayout(5,1));
