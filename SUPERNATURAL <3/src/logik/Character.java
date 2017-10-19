@@ -8,14 +8,15 @@ public class Character implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -6473100962818838465L;
-	public String name;
-    public Integer live = 100;
-    public Boolean isDead = false;
-    public ArrayList<Goodies> inventory;
+	private String name;
+    private Integer live = 100;
+    private Boolean isDead = false;
+    private ArrayList<Goodies> inventory = new ArrayList<Goodies>(20);
+    private String type;
+    
 
     public Character(String name){
         this.name = name;
-        inventory = new ArrayList<Goodies>(20);
     }
     
     public String getName() {
@@ -31,17 +32,49 @@ public class Character implements Serializable{
     }
     
     public void looseLive(Integer i){
-    	this.live -= i ;
+    	this.setLive(this.getLive() - i) ;
     }
     public void sleepAndheal(Integer i){
-    	this.live += i;
+    	this.setLive(this.getLive() + i);
     }
     
     public boolean isDead(){
-    	if(live <= 0) {
-    		live = 0;
+    	if(getLive() <= 0) {
+    		setLive(0);
     		isDead = true;
     	}
     	return isDead;
     }
+
+	public ArrayList<Goodies> getInventory() {
+		return inventory;
+	}
+
+	public void linkInventory(Goodies g) {
+		this.inventory.add(g);
+	}
+	
+	public void unlinkInventory(Goodies g){
+		this.inventory.remove(g);
+	}
+	
+	public void setType(){
+		type = this.getClass().toString();
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Integer getLive() {
+		return live;
+	}
+
+	public void setLive(Integer live) {
+		this.live = live;
+	}
 }

@@ -12,9 +12,13 @@ public class HunterContainer implements Iterator<Hunter> {
     private HunterContainer(){
     }
 
-    public HunterContainer instance(){
+    public static HunterContainer instance(){
         if (huncon == null){
             huncon = new HunterContainer();
+            for (Character c: CharacterContainer.instance().charconList)
+            if (c.getType() == "Hunter"){
+            	huncon.add((Hunter)c);
+            }
         }
         return huncon;
     }
@@ -30,5 +34,9 @@ public class HunterContainer implements Iterator<Hunter> {
         } else {
             return null;
         }
+    }
+
+    public void add(Hunter charadding){
+    	hunconList.add(charadding);
     }
 }

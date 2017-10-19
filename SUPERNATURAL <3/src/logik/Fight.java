@@ -17,8 +17,8 @@ public class Fight extends Thread{
 			f1.looseLive(i);
 			f2.looseLive(k);
 			sleep(1000);
-			System.out.println(f1.name + ": " + f1.live);
-			System.out.println(f2.name + ": " + f2.live);
+			System.out.println(f1.getName() + ": " + f1.getLive());
+			System.out.println(f2.getName() + ": " + f2.getLive());
 		} catch (InterruptedException slpintex) {
 			System.out.println(slpintex.getMessage());
 		}
