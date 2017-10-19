@@ -15,7 +15,6 @@ public class ListAllCharDia extends Dialog implements Observer {
 	private Panel pn = new Panel();
 	private Panel php = new Panel();
 	private GridLayout g = new GridLayout(CharacterContainer.instance().charconList.size()+ 1,1);
-	
 	public ListAllCharDia(MainWindow m) {
 		super(m, "Liste aller Charactere");
 		this.setLayout(new BorderLayout());

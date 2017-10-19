@@ -14,7 +14,7 @@ public class Character implements Serializable{
     private Integer live = 100;
     private Boolean isDead = false;
     private ArrayList<Goodies> inventory = new ArrayList<Goodies>(20);
-    private String type;
+    protected CharacterType type;
     
 
     public Character(String name){
@@ -60,16 +60,8 @@ public class Character implements Serializable{
 		this.inventory.remove(g);
 	}
 	
-	public void setType(){
-		type = this.getClass().toString();
-	}
-	
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
+	public CharacterType getType() {
+		return this.type;
 	}
 
 	public Integer getLive() {
@@ -78,5 +70,9 @@ public class Character implements Serializable{
 
 	public void setLive(Integer live) {
 		this.live = live;
+	}
+	
+	public void setType(CharacterType type){
+		this.type = type;
 	}
 }
