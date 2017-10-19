@@ -1,10 +1,10 @@
 package logik;
 
-import gui.PickOne;
+import gui.MainWindow;
 
 public class Supernatural {
 		  public static void main(String args[]){
 		    @SuppressWarnings("unused")
-			PickOne Erschaffe = new PickOne();
+			MainWindow Erschaffe = new MainWindow();
 		  }
 }

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Hunt extends Dialog {
+public class HuntPickDia extends Dialog {
     /**
 	 * 
 	 */
@@ -14,8 +14,8 @@ public class Hunt extends Dialog {
     Button action = new Button("Kampf");
 
 
-    public Hunt(PickOne p1) {
-        super(p1 ,"Neue Jagd beginnen");
+    public HuntPickDia(MainWindow m) {
+        super(m ,"Neue Jagd beginnen");
         this.setLayout(new BorderLayout());
         this.setModal(true);
         this.add(zeigeAlle, BorderLayout.NORTH);

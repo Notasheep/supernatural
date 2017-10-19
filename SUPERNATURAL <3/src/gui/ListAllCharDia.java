@@ -4,10 +4,9 @@ import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 import java.awt.event.*;
-import logik.Hunter;
-import logik.HunterContainer;
+import logik.CharacterContainer;
 
-public class ListOfAllCharacter extends Dialog implements Observer {
+public class ListAllCharDia extends Dialog implements Observer {
 	/**
 	 * 
 	 */
@@ -15,10 +14,10 @@ public class ListOfAllCharacter extends Dialog implements Observer {
 	private Button close = new Button("OK");
 	private Panel pn = new Panel();
 	private Panel php = new Panel();
-	private GridLayout g = new GridLayout(HunterContainer.instance().hunconList.size()+ 1,1);
+	private GridLayout g = new GridLayout(CharacterContainer.instance().charconList.size()+ 1,1);
 	
-	public ListOfAllCharacter(PickOne p1) {
-		super(p1, "Liste aller Charactere");
+	public ListAllCharDia(MainWindow m) {
+		super(m, "Liste aller Charactere");
 		this.setLayout(new BorderLayout());
 		this.add(pn, BorderLayout.WEST);
 		this.add(php, BorderLayout.EAST);
@@ -26,7 +25,7 @@ public class ListOfAllCharacter extends Dialog implements Observer {
 		php.setLayout(g);
 		pn.add(new Label("Name", Label.CENTER));
 		php.add(new Label("Health Points", Label.CENTER));
-		for (Hunter c : HunterContainer.instance().hunconList) {
+		for (character.Character c : CharacterContainer.instance().charconList) {
 			pn.add(new Label(c.getName()));
 			php.add(new Label(""+ c.getLive()));
 		}
@@ -47,7 +46,7 @@ public class ListOfAllCharacter extends Dialog implements Observer {
 	}
 	public void update(Observable o, Object arg) {
 		g.setRows(g.getRows()+1);
-		Hunter a = HunterContainer.instance().hunconList.get(HunterContainer.instance().hunconList.size()-1);
+		character.Character a = CharacterContainer.instance().charconList.get(CharacterContainer.instance().charconList.size()-1);
 		pn.add(new Label(a.getName()));
 		php.add(new Label("" + a.getLive()));
 		this.pack();

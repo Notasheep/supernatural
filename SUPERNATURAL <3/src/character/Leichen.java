@@ -1,4 +1,5 @@
-package logik;
+package character;
+
 
 public class Leichen extends Character {
 

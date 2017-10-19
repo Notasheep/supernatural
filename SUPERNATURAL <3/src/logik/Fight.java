@@ -1,5 +1,7 @@
 package logik;
 
+import character.Character;
+
 public class Fight extends Thread{
 	Character f1; 
 	Character f2;

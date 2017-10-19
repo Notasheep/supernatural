@@ -7,7 +7,7 @@ import data.WriteCharacterFile;
 
 import logik.CharacterContainer;
 
-public class PickOne extends Frame {
+public class MainWindow extends Frame {
 
 	/**
 	 * 
@@ -19,7 +19,7 @@ public class PickOne extends Frame {
     Button closeAndSave = new Button("Schpeichern und Schließen");
     Button newHunt = new Button("Neue Jagd beginnen");
     
-    public PickOne() {
+    public MainWindow() {
     	super("Jägerregister");
         this.setLayout(new GridLayout(5,1));
         this.addWindowListener(new WindowAdapter() {
@@ -30,20 +30,22 @@ public class PickOne extends Frame {
             }
         });
         this.add(bestehende);
-        final PickOne x = this;
+        final MainWindow x = this;
         ActionListener l = new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if (e.getSource() == neuerJ) {
         			@SuppressWarnings("unused")
-					AddHunter newHunter = new AddHunter(x);
+					NewHunterDialog newHunter = new NewHunterDialog(x);
         		} else if (e.getSource() == bestehende) {
-        			ListOfAllCharacter listOfAll = new ListOfAllCharacter(x);
+        			ListAllCharDia listOfAll = new ListAllCharDia(x);
         			CharacterContainer.instance().addObserver(listOfAll);
         		} else if (e.getSource() == newHunt){
         			@SuppressWarnings("unused")
-					Hunt huntWindow = new Hunt(x);
+					HuntPickDia huntWindow = new HuntPickDia(x);
         		}else if (e.getSource() == closeAndSave) {
-        			 
+        			WriteCharacterFile.saveAllCharacters(CharacterContainer.instance());
+                    dispose();
+                    return;
         		}
         	}
         };

@@ -12,10 +12,10 @@ public class ReadCharacterFile {
 	try {
 	    FileInputStream streamIn = new FileInputStream("Data/AllCharacters.txt");
 	    objectinputstream = new ObjectInputStream(streamIn);
-	    charcon.charconList = (ArrayList<logik.Character>) objectinputstream.readObject();
+	    charcon.charconList = (ArrayList<character.Character>) objectinputstream.readObject();
 	} catch (Exception e) {
 	    e.printStackTrace();
-	    charcon.charconList = new ArrayList<logik.Character>();
+	    charcon.charconList = new ArrayList<character.Character>();
 	} finally {
 	    if(objectinputstream != null){
 	        try {

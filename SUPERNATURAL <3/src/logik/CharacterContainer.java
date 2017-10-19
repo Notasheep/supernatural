@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
+import character.Character;
+
 import data.ReadCharacterFile;
 
 public class CharacterContainer extends Observable implements Iterator<Character> {

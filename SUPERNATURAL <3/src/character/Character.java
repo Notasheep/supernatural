@@ -1,7 +1,9 @@
-package logik;
+package character;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import logik.Goodies;
 
 public class Character implements Serializable{
     /**

@@ -6,10 +6,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import logik.CharacterContainer;
-import logik.Hunter;
+import character.Hunter;
 
-public class AddHunter extends Dialog {
+import logik.CharacterContainer;
+
+public class NewHunterDialog extends Dialog {
 
 	/**
 	 * 
@@ -19,9 +20,9 @@ public class AddHunter extends Dialog {
 	TextField enterName = new TextField(20);
 	Label name = new Label("Name:");
 
-	public AddHunter(PickOne p1) {
+	public NewHunterDialog (MainWindow m) {
 
-		super(p1, "Neuen Jäger anlegen");
+		super(m, "Neuen Jäger anlegen");
 		this.setLayout(new BorderLayout());
 		this.setModal(true);
 		this.add(save, BorderLayout.SOUTH);
