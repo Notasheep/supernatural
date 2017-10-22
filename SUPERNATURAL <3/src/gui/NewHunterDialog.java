@@ -11,7 +11,7 @@ import character.Hunter;
 import logik.CharacterContainer;
 
 public class NewHunterDialog extends Dialog {
-
+	private NewHunterDialog nhd;
 	/**
 	 * 
 	 */
@@ -29,8 +29,12 @@ public class NewHunterDialog extends Dialog {
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == save) {
-					CharacterContainer.instance().add(new Hunter(enterName.getText()));
-					dispose();
+					try {
+						CharacterContainer.instance().add(new Hunter(enterName.getText()));
+						dispose();
+					} catch (IllegalArgumentException inex){
+						new FailDia (nhd , inex);
+					}
 				}
 
 			}

@@ -13,26 +13,41 @@ public class Character implements Serializable{
 	private String name;
     private Integer live = 100;
     private Boolean isDead = false;
+    private Integer experiencePoints = 0;
+    private Integer nextLevelAt = 50;
+    private Integer level = 0;
     private ArrayList<Goodies> inventory = new ArrayList<Goodies>(20);
-    protected CharacterType type;
+    protected CharacterType type; 
     
-
-    public Character(String name){
-        this.name = name;
+    //Constructor
+    public Character(String name)throws IllegalArgumentException {
+        this.setName(name);
     }
     
+    //Methods
+    		//Main attrebutes
+    			//Name
     public String getName() {
     	return this.name;
     }
-    public void setName(String name){
+    private void setName(String name) throws IllegalArgumentException {
     	if(checkName(name)){
     		this.name = name;
+    	} else {
+    		throw new IllegalArgumentException("Kein Name eingegeben.");
     	}
     }
     private Boolean checkName(String name){
-    	return (name.length()< 21);
+    	return (name.length()< 21 && name != null && name.length() > 0);
     }
     
+    			//live
+    public Integer getLive() {
+		return live;
+	}
+	public void setLive(Integer live) {
+		this.live = live;
+	}
     public void looseLive(Integer i){
     	this.setLive(this.getLive() - i) ;
     }
@@ -47,32 +62,36 @@ public class Character implements Serializable{
     	}
     	return isDead;
     }
-
-	public ArrayList<Goodies> getInventory() {
+    
+			//Inventory
+    public ArrayList<Goodies> getInventory() {
 		return inventory;
+    }
+    public void linkInventory(Goodies g) {
+    		this.inventory.add(g);
 	}
-
-	public void linkInventory(Goodies g) {
-		this.inventory.add(g);
-	}
-	
 	public void unlinkInventory(Goodies g){
 		this.inventory.remove(g);
 	}
 	
+			//Type
 	public CharacterType getType() {
 		return this.type;
 	}
-
-	public Integer getLive() {
-		return live;
-	}
-
-	public void setLive(Integer live) {
-		this.live = live;
-	}
-	
 	public void setType(CharacterType type){
 		this.type = type;
 	}
+	
+    	//Level management
+       private void levelUp(){
+    	level += 1;
+    	nextLevelAt = (nextLevelAt * 2) + (nextLevelAt / 100 * 23);
+    }
+    public void addXP(int xpPlusToGet){
+    	experiencePoints += (xpPlusToGet + 100);
+    	if (experiencePoints >= nextLevelAt) {
+    		experiencePoints -= nextLevelAt;
+    		levelUp();
+    	}
+    }
 }
