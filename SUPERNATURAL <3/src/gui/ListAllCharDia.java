@@ -41,7 +41,9 @@ public class ListAllCharDia extends Dialog implements Observer {
 		});
 		this.setMinimumSize(new Dimension(240,0));
 		this.pack();
+		this.setLocationRelativeTo(m);
 		this.setVisible(true);
+		
 	}
 	public void update(Observable o, Object arg) {
 		g.setRows(g.getRows()+1);

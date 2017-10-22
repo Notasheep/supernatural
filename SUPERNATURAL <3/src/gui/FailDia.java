@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FailDia extends Dialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2928332125937332305L;
 	Button ok = new Button("OK");
 	public FailDia(NewHunterDialog nhd, Exception e) {
 		super(nhd, "Uuupsala...");

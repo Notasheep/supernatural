@@ -7,30 +7,39 @@ import data.WriteCharacterFile;
 
 import logik.CharacterContainer;
 
-public class MainWindow extends Frame {
+public class MainWindow extends Dialog {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8805017797903876173L;
-	Button bestehende = new Button("Bestehende Charactere wiedergeben");
-    Button neuerJ = new Button("Neuen Jäger anlegen");
-    Button cas = new Button("Castiel - Zur Zeit nicht erreichbar");
-    Button closeAndSave = new Button("Schpeichern und Schließen");
-    Button newHunt = new Button("Neue Jagd beginnen");
-    
-    
-    public MainWindow() {
-    	super("Jägerregister");
+	private Button bestehende = new Button("Bestehende Charactere wiedergeben");
+    private Button neuerJ = new Button("Neuen Jäger anlegen");
+    private Button cas = new Button("Castiel - Zur Zeit nicht erreichbar");
+    private Button closeAndSave = new Button("Schpeichern und Schließen");
+    private Button newHunt = new Button("Neue Jagd beginnen");
+     
+    public MainWindow(BackgroundGui g) {
+    	//Layout management
+    	super(g, "Jägerregister");
         this.setLayout(new GridLayout(5,1));
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-            	WriteCharacterFile.saveAllCharacters(CharacterContainer.instance());
-                dispose();
-            }
-        });
+        this.setLocationRelativeTo(0,0);
+        this.setModal(true);
+        this.setUndecorated(true);
+        
+        //Buttons management
         this.add(bestehende);
+        this.add(neuerJ);
+        this.add(newHunt);
+        this.add(cas);
+        this.add(closeAndSave);
+        	//Buttons color
+        bestehende.setForeground(Color.WHITE);
+        neuerJ.setForeground(Color.WHITE);
+        cas.setForeground(Color.WHITE);
+        newHunt.setForeground(Color.WHITE);
+        closeAndSave.setForeground(Color.WHITE);
+        	//Actionlistener to buttons 
         final MainWindow x = this;
         ActionListener l = new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -46,6 +55,7 @@ public class MainWindow extends Frame {
         		}else if (e.getSource() == closeAndSave) {
         			WriteCharacterFile.saveAllCharacters(CharacterContainer.instance());
                     dispose();
+                    System.exit(0);
                     return;
         		}
         	}
@@ -55,11 +65,15 @@ public class MainWindow extends Frame {
         cas.addActionListener(l);
         newHunt.addActionListener(l);
         closeAndSave.addActionListener(l);
-        this.add(neuerJ);
-        this.add(newHunt);
-        this.add(cas);
-        this.add(closeAndSave);
+
+        //Visibility
         this.pack(); 
         this.setVisible(true);
     }
+
+
+	private void setLocationRelativeTo(int i, int j) {
+		// TODO Auto-generated method stub
+		
+	}
 }
