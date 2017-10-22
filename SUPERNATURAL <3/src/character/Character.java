@@ -34,7 +34,7 @@ public class Character implements Serializable{
     	if(checkName(name)){
     		this.name = name;
     	} else {
-    		throw new IllegalArgumentException("Kein Name eingegeben.");
+    		throw new IllegalArgumentException("Der Name ist zu kurz, oder zu lang.");
     	}
     }
     private Boolean checkName(String name){

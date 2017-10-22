@@ -15,13 +15,16 @@ public class FailDia extends Dialog {
 		ok.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent ev){
 				if (ev.getSource() == ok) {
+					toBack();
 					dispose();
 				}
 			}
 		});
 		this.add(ok, BorderLayout.SOUTH);
 		this.add(new Label(e.getMessage()),BorderLayout.NORTH);
+		this.setModal(true);
 		this.pack();
+		this.toFront();
 		this.setVisible(true);
 	}
 }
