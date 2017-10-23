@@ -7,7 +7,7 @@ import data.WriteCharacterFile;
 
 import logik.CharacterContainer;
 
-public class MainWindow extends Dialog {
+public class MainWindow extends Frame {
 
 	/**
 	 * 
@@ -18,21 +18,25 @@ public class MainWindow extends Dialog {
     private Button cas = new Button("Castiel - Zur Zeit nicht erreichbar");
     private Button closeAndSave = new Button("Schpeichern und Schließen");
     private Button newHunt = new Button("Neue Jagd beginnen");
-     
-    public MainWindow(BackgroundGui g) {
+    private Panel po = new Panel();
+    private Panel pu = new Panel();
+    public MainWindow() {
     	//Layout management
-    	super(g, "Jägerregister");
-        this.setLayout(new GridLayout(5,1));
+    	this.setTitle("Pie Hunters");
+        this.setLayout(new BorderLayout());
         this.setLocationRelativeTo(0,0);
-        this.setModal(true);
+        this.setBackground(Color.BLACK);
         this.setUndecorated(true);
+        this.add(po, BorderLayout.NORTH);
+        this.add(pu, BorderLayout.SOUTH);
+        pu.setLayout(new GridLayout(5,1));
         
         //Buttons management
-        this.add(bestehende);
-        this.add(neuerJ);
-        this.add(newHunt);
-        this.add(cas);
-        this.add(closeAndSave);
+        pu.add(bestehende);
+        pu.add(neuerJ);
+        pu.add(newHunt);
+        pu.add(cas);
+        pu.add(closeAndSave);
         	//Buttons color
         bestehende.setForeground(Color.WHITE);
         neuerJ.setForeground(Color.WHITE);
@@ -67,7 +71,7 @@ public class MainWindow extends Dialog {
         closeAndSave.addActionListener(l);
 
         //Visibility
-        this.pack(); 
+        this.setExtendedState(MAXIMIZED_BOTH); 
         this.setVisible(true);
     }
 

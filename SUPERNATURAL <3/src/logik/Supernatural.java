@@ -1,10 +1,10 @@
 package logik;
 
-import gui.BackgroundGui;
+import gui.MainWindow;
 
 public class Supernatural {
 		  public static void main(String args[]){
 			  @SuppressWarnings("unused")
-			BackgroundGui g = new BackgroundGui();
+			  MainWindow erschaffe = new MainWindow();
 		  }
 }
