@@ -1,7 +1,7 @@
 package character;
 
 
-public class Hunter extends Character{
+public class Hunter extends Good{
 
 	/**
 	 * 

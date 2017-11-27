@@ -2,6 +2,14 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import data.WriteCharacterFile;
 
@@ -15,34 +23,40 @@ public class MainWindow extends Frame {
 	private static final long serialVersionUID = 8805017797903876173L;
 	private Button bestehende = new Button("Bestehende Charactere wiedergeben");
     private Button neuerJ = new Button("Neuen Jäger anlegen");
+    private Button neuesM = new Button("Neues Monster Anlegen");
     private Button cas = new Button("Castiel - Zur Zeit nicht erreichbar");
-    private Button closeAndSave = new Button("Schpeichern und Schließen");
+    private Button closeAndSave = new Button("Speichern und Schließen");
     private Button newHunt = new Button("Neue Jagd beginnen");
-    private Panel po = new Panel();
-    private Panel pu = new Panel();
+    private JPanel po = new JPanel();
+    private Panel pu = new Panel(new GridLayout(5, 1));
     public MainWindow() {
     	//Layout management
     	this.setTitle("Pie Hunters");
         this.setLayout(new BorderLayout());
-        this.setLocationRelativeTo(0,0);
-        this.setBackground(Color.BLACK);
         this.setUndecorated(true);
         this.add(po, BorderLayout.NORTH);
-        this.add(pu, BorderLayout.SOUTH);
-        pu.setLayout(new GridLayout(5,1));
+        this.add(pu, BorderLayout.CENTER);
+        
+        //Image 
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(new File("GuiLayoutData/toa-heftiba-82432.jpg"));
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        JLabel ii = new JLabel(new ImageIcon(image));
+        ii.setBackground(Color.BLACK);
+        po.add(ii);
         
         //Buttons management
         pu.add(bestehende);
         pu.add(neuerJ);
+        pu.add(neuesM);
         pu.add(newHunt);
         pu.add(cas);
         pu.add(closeAndSave);
-        	//Buttons color
-        bestehende.setForeground(Color.WHITE);
-        neuerJ.setForeground(Color.WHITE);
-        cas.setForeground(Color.WHITE);
-        newHunt.setForeground(Color.WHITE);
-        closeAndSave.setForeground(Color.WHITE);
+
         	//Actionlistener to buttons 
         final MainWindow x = this;
         ActionListener l = new ActionListener() {
@@ -50,13 +64,16 @@ public class MainWindow extends Frame {
         		if (e.getSource() == neuerJ) {
         			@SuppressWarnings("unused")
 					NewHunterDialog newHunter = new NewHunterDialog(x);
+        		} else if (e.getSource() == neuesM) {
+        			@SuppressWarnings("unused")
+					NewMonsterGui newMonster = new NewMonsterGui(x);
         		} else if (e.getSource() == bestehende) {
         			ListAllCharDia listOfAll = new ListAllCharDia(x);
         			CharacterContainer.instance().addObserver(listOfAll);
         		} else if (e.getSource() == newHunt){
         			@SuppressWarnings("unused")
 					HuntPickDia huntWindow = new HuntPickDia(x);
-        		}else if (e.getSource() == closeAndSave) {
+        		} else if (e.getSource() == closeAndSave) {
         			WriteCharacterFile.saveAllCharacters(CharacterContainer.instance());
                     dispose();
                     System.exit(0);
@@ -65,6 +82,7 @@ public class MainWindow extends Frame {
         	}
         };
         bestehende.addActionListener(l);
+        neuesM.addActionListener(l);
         neuerJ.addActionListener(l);
         cas.addActionListener(l);
         newHunt.addActionListener(l);
@@ -74,10 +92,4 @@ public class MainWindow extends Frame {
         this.setExtendedState(MAXIMIZED_BOTH); 
         this.setVisible(true);
     }
-
-
-	private void setLocationRelativeTo(int i, int j) {
-		// TODO Auto-generated method stub
-		
-	}
 }

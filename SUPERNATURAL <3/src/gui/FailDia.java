@@ -13,7 +13,7 @@ public class FailDia extends Dialog {
 	 */
 	private static final long serialVersionUID = 2928332125937332305L;
 	Button ok = new Button("OK");
-	public FailDia(NewHunterDialog nhd, Exception e) {
+	public FailDia(Dialog nhd, Exception e) {
 		super(nhd, "Uuupsala...");
 		this.setLayout(new BorderLayout());
 		ok.addActionListener(new ActionListener(){ 

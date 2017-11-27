@@ -18,6 +18,7 @@ public class Character implements Serializable{
     private Integer level = 0;
     private ArrayList<Goodies> inventory = new ArrayList<Goodies>(20);
     protected CharacterType type; 
+    private Boolean untouchable = false;
     
     //Constructor
     public Character(String name)throws IllegalArgumentException {
@@ -83,15 +84,29 @@ public class Character implements Serializable{
 	}
 	
     	//Level management
-       private void levelUp(){
-    	level += 1;
-    	nextLevelAt = (nextLevelAt * 2) + (nextLevelAt / 100 * 23);
-    }
+	 private void levelUp(){
+	    	level += 1;
+	    	nextLevelAt = (nextLevelAt * 2) + (nextLevelAt / 100 * 23);
+	    }
     public void addXP(int xpPlusToGet){
     	experiencePoints += (xpPlusToGet + 100);
     	if (experiencePoints >= nextLevelAt) {
     		experiencePoints -= nextLevelAt;
     		levelUp();
     	}
+    }
+    public void setNextLevelAt(Integer i){
+    	this.nextLevelAt = i;
+    }
+    public Integer getnextLevelAt() {
+    	return this.nextLevelAt;
+    }
+    
+    	//how to defeat
+    public void setUntouchable(Boolean untouchable) {
+    	this.untouchable = untouchable;
+    }
+    public Boolean getUntouchable() {
+    	return untouchable;
     }
 }
